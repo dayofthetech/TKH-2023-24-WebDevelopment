@@ -13,6 +13,10 @@
 let inventory = [];
 let wallet = 0;
 
+function textScenario (text) {
+    const textElement = document.getElementById("game-text");
+    textElement.textContent = text;
+}
 
 function displayImage(imagePath) {
     const imageContainer = document.getElementById('image-container');
@@ -118,8 +122,4 @@ function startGame() {
     wallet = 0;
     firstLevel();
 }
-
-
-startGame();
-
 
