@@ -18,6 +18,7 @@ function textScenario (text) {
     textElement.textContent = text;
 }
 
+// source GPT
 function displayImage(imagePath) {
     const imageContainer = document.getElementById('image-container');
     const imgElement = document.createElement('img');
