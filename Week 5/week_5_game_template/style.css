@@ -3,10 +3,20 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url("images/bckg.jpg");
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
 }
 
 #gameOverScreen {
     display: none;
+    color: aqua;
+    font-size: large;
+    /* At game over both images move up in absolute */
+    position: absolute;
+    top: 40px; left: 550px;
+
 }
 
 #fightingSpace {
@@ -14,6 +24,16 @@ body {
     flex-direction: row;
 }
 
+#title,
+#playerTurn {
+    color: aqua;
+}
+
+#p1,
+#p2,
+#health {
+    color: rgba(236, 12, 12, 0.7);
+}
 .player {
     display: flex;
     flex-direction: column;
