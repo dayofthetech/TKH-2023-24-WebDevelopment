@@ -3,105 +3,78 @@
  *
  */
 
-/* This sections utilizes the DOM and calls the respective html elements
-by ID or class
-There is six items displayed on the page I have six variables to work here
- */
-const computerChoiceDisplay = document.getElementById('computer-choice');
-const userChoiceDisplay = document.getElementById('user-choice');
-const resultDisplay = document.getElementById('result');
-const possibleChoices = document.querySelectorAll('button');
-const uScore = document.getElementById('user');
-const cScore = document.getElementById('computer');
-
-
-/* Global variables  */
-let computerScore = 0;
+/* resubmition code */
+// get DOM elements
+let playerChoice = document.getElementById('user-choice');
+let computerChoiceG = document.getElementById('computer-choice');
+let scissors = document.getElementById('scissors');
+let rock = document.getElementById('rock');
+let paper = document.getElementById('paper');
+let uScore = document.getElementById('user');
+let cScore = document.getElementById('computer');
+let result = document.getElementById('result');
+// count the rounds played
+let roundsPlayed = 0;
+// score tracker
 let userScore = 0;
+let computerScore = 0;
 
-let userChoice
-let computerChoice
-let result
+// Event listeners for user's choice
+rock.addEventListener('click', () => playRound('rock'));
+paper.addEventListener('click', () => playRound('paper'));
+scissors.addEventListener('click', () => playRound('scissors'));
 
-/* event handler loop
-for each button when it get clicked, it will triger an event listener and
-will grab the value (e) of said button, button text then gets saved in the global variable
-userChoice and display on the page
-generateComputerChoice function gets called followed by
-getResult function */
-possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
-  userChoice = e.target.id
-  userChoiceDisplay.innerHTML = userChoice
-  generateComputerChoice()
-  getResult()
-}))
-
-/* Rather than hard code the number of options available currently 3, I just set
-the random number to be up to the length of buttons, in case a different scenario
-requiere to add more features
- */
-function generateComputerChoice() {
-  //Math.floor gives you a full integer
-  const randomNumber = Math.floor(Math.random() * possibleChoices.length) + 1;
-
-  /* Assigns a value to a number and that value gets the computerChoice variable */
-  if (randomNumber === 1) {
-    computerChoice = 'rock'
-  }
-  if (randomNumber === 2) {
-    computerChoice = 'scissors'
-  }
-  if (randomNumber === 3) {
-    computerChoice = 'paper'
-  }
-  /* Adds the text of value into the page */
-  computerChoiceDisplay.innerHTML = computerChoice
+// Function to get computer's choice
+// create an array and with the random function select option based on index
+function getComputerChoice() {
+  const choices = ['rock', 'paper', 'scissors'];
+  const randomIndex = Math.floor(Math.random() * 3);
+  return choices[randomIndex];
 }
 
-/* Compares each variable and gives results accordingly
-then add one point to the player
-One improvement for later can be if more options are added to the game.
-Otherwise the conditionals statements could keep going for a while
- */
-function getResult() {
-  if (computerChoice === userChoice) {
-    result = 'its a draw!'
-  }
-  else if (computerChoice === 'rock' && userChoice === "paper") {
-    result = 'you win!';
-    userScore += 1;
-    uScore.innerHTML = userScore;
-  }
-  else if (computerChoice === 'rock' && userChoice === "scissors") {
-    result = 'you lost!';
-    computerScore += 1;
-    cScore.innerHTML = computerScore;
-  }
-  else if (computerChoice === 'paper' && userChoice === "scissors") {
-    result = 'you win!';
-    userScore += 1;
-    uScore.innerHTML = userScore;
-  }
-  else if (computerChoice === 'paper' && userChoice === "rock") {
-    result = 'you lose!';
-    computerScore += 1;
-    cScore.innerHTML = computerScore;
-  }
-  else if (computerChoice === 'scissors' && userChoice === "rock") {
-    result = 'you win!'
-    userScore += 1;
-    uScore.innerHTML = userScore;
-  }
-  else if (computerChoice === 'scissors' && userChoice === "paper") {
-    result = 'you lose!';
-    computerScore += 1;
-    cScore.innerHTML = computerScore;
+// Function to determine the winner of a round
+function playRound(userChoice) {
+  // best of three - change number to increase or decrease rounds
+  if (roundsPlayed >= 3) {
+    // Check if it's the best of three
+    if (userScore > computerScore) {
+      result.textContent = 'You win the best of three!';
+    } else if (userScore < computerScore) {
+      result.textContent = 'Computer wins the best of three!';
+    } else {
+      result.textContent = 'It\'s a tie in the best of three!';
+    }
+    // Disable further button clicks
+    rock.disabled = true;
+    paper.disabled = true;
+    scissors.disabled = true;
+  } else {
+    let computerChoice = getComputerChoice();
+    playerChoice.textContent = ` ${userChoice}`;
+    computerChoiceG.textContent = ` ${computerChoice}`;
+    // console.log(computerChoice);
 
+    if (userChoice === computerChoice) {
+      result.textContent = 'It\'s a tie!';
+    } else if (
+      // comparing all possible outcomes under one else if
+      // rock beats scissors or scissors beat paper or paper beats rock
+      // anything else would mean the computer won unless tie
+      (userChoice === 'rock' && computerChoice === 'scissors') ||
+      (userChoice === 'scissors' && computerChoice === 'paper') ||
+      (userChoice === 'paper' && computerChoice === 'rock')
+    ) {
+      result.textContent = 'You win this round!';
+      userScore++;
+    } else {
+      result.textContent = 'Computer wins this round!';
+      computerScore++;
+    }
+
+    roundsPlayed++;
   }
 
-  resultDisplay.innerHTML = result
+  // Update scores
+  uScore.textContent = userScore;
+  cScore.textContent = computerScore;
 }
-
-/* Source
-I watched a video and code along so I remeber having it on my repo
-said repo was forked provided by  https://github.com/kubowania*/

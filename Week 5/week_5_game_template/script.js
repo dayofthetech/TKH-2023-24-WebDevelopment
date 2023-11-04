@@ -2,6 +2,7 @@
 [X] Randonly select which player will go first
 [X] Display player turn
 [] Play again function
+[] create random number of damage
 [X] Add background
 [] Add a second button - kick
 [] background music
@@ -62,6 +63,9 @@ function gameOver(winningPlayerName) {
 
     let playerTwoAttackButton = document.getElementById("playerTwoAttack");
     playerTwoAttackButton.disabled = true;
+
+    // once gameOver - player can click restart
+    restart();
 
 }
 
@@ -228,4 +232,19 @@ function attackPlayerTwo(){
     animatePlayer();
     changeButtonStatus();
     doDamage();
+}
+
+
+/*  */
+function restart () {
+    let restartBtn = document.getElementById('restartbtn');
+    restartBtn.addEventListener('click', () => {
+        restartBtn.style.display = 'none'; // Hide the button when clicked
+        let playerOneHealth = document.getElementById("playerOneHealth");
+        playerOneHealth.innerHTML = '100';
+        let playerTwoHealth = document.getElementById("playerTwoHealth");
+        playerTwoHealth.innerHTML = '100';
+        randomPlayerStarts();
+    });
+    restartBtn.style.display = 'block';
 }

@@ -14,8 +14,8 @@ body {
     color: aqua;
     font-size: large;
     /* At game over both images move up in absolute */
-    position: absolute;
-    top: 40px; left: 550px;
+    position:static;
+    top: auto; left: auto;
 
 }
 
@@ -99,4 +99,12 @@ button {
     color: white;
     font-weight: 600;
     font-size: 24px;
+
+}
+
+#restartbtn {
+    position:static;
+    top: auto; left: auto;
+    /* this overrides js */
+    display: none;
 }
