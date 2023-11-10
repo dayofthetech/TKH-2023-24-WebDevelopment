@@ -1,14 +1,35 @@
-/* Rubric
-[X] Randonly select which player will go first
-[X] Display player turn
-[] Play again function
-[] create random number of damage
-[X] Add background
+/* Features to add
 [] Add a second button - kick
 [] background music
 [] Add health bar rather than number
 
 */
+
+// Add new characters
+const characterImages = [
+    "./images/characterasset1.png",
+    "./images/R_Idle.png",
+    "./images/hero.png",
+];
+
+// DOM retrieve space where chatr will be displayed
+const selectedCharacter = document.querySelector('#characterSelectionOne div img');
+
+let currentCharacterIndex = 0;
+// left and right logic
+document.getElementById('prevCharacter').addEventListener('click', () => {
+    currentCharacterIndex = (currentCharacterIndex - 1 + characterImages.length) % characterImages.length;
+    selectedCharacter.src = characterImages[currentCharacterIndex];    selectedCharacterTwo.src = characterImages[currentCharacterIndex];
+});
+
+document.getElementById('nextCharacter').addEventListener('click', () => {
+    currentCharacterIndex = (currentCharacterIndex + 1) % characterImages.length;
+    selectedCharacter.src = characterImages[currentCharacterIndex];
+});
+
+// Initialize the selected character image
+selectedCharacter.src = characterImages[currentCharacterIndex];
+
 
 // This function takes care of randomly selecting
 // a starting player and display that players name in the game
@@ -16,11 +37,20 @@ function randomPlayerStarts() {
     const randomValue = Math.floor(Math.random() * 2);
     console.log(randomValue);
 
+    let playerTurnDisplay = document.getElementById("playerTurn");
+    playerTurnDisplay.style = "display: block;";
+
     if (randomValue === 1) {
+        // if number is 1, P1 attacks first
         const firstPlayerAttackButton = document.getElementById("playerOneAttack");
         firstPlayerAttackButton.disabled = false;
         firstPlayerAttackButton.classList.add("active");
         firstPlayerAttackButton.classList.remove("inactive");
+
+        const secondPlayerAttackButton = document.getElementById("playerTwoAttack");
+        secondPlayerAttackButton.disabled = true;
+        secondPlayerAttackButton.classList.add("inactive");
+        secondPlayerAttackButton.classList.remove("active");
 
         // displaying player 1
         let playerOne = document.getElementById("playerName");
@@ -91,9 +121,16 @@ function attackPlayerOne(){
     function animatePlayer() {
         // an array containing the images using in player one's animation
         // the indices are later used to cycle / "animate" when the player attacks
+        // let playerOneFrames = [
+        //     "./images/R_Idle.png",
+        //     "./images/R_Attack.png"
+        // ];
+        // Above is the original sprite - below is the update it player
+        // ideally this won't be hardcoded and instead call a function
+        // to display charts selected
         let playerOneFrames = [
-            "./images/R_Idle.png",
-            "./images/R_Attack.png"
+            "./images/characterasset1.png",
+            "./images/characterasset1attack.png"
         ];
 
         let playerSprite = document.getElementById("playerOneSprite");
@@ -141,12 +178,12 @@ function attackPlayerOne(){
         let playerTwoHealth = document.getElementById("playerTwoHealth");
         // conversts the innerHTML from string to a number and stores it in a variable
         let playerTwoHealthNum = Number(playerTwoHealth.innerHTML);
-        // reduces by 10
-        playerTwoHealthNum -= 10;
+        // reduces by random num between 1 and 10
+        playerTwoHealthNum -= Math.floor(Math.random() * 10);
         // resets the HTML to the new value
         playerTwoHealth.innerHTML = playerTwoHealthNum;
 
-        if(playerTwoHealthNum === 80){
+        if(playerTwoHealthNum <= 80){
             gameOver("Player 1");
         }
 
@@ -218,12 +255,12 @@ function attackPlayerTwo(){
         let playerOneHealth = document.getElementById("playerOneHealth");
         // conversts the innerHTML from string to a number and stores it in a variable
         let playerOneHealthNum = Number(playerOneHealth.innerHTML);
-        // reduces by 10
-        playerOneHealthNum -= 10;
+        // reduces by random num between 1 and 10
+        playerOneHealthNum -= Math.floor(Math.random() * 10);
         // resets the HTML to the new value
         playerOneHealth.innerHTML = playerOneHealthNum;
 
-        if(playerOneHealthNum === 80){
+        if(playerOneHealthNum <= 80){
             gameOver("Player 2");
         }
     }
@@ -244,6 +281,13 @@ function restart () {
         playerOneHealth.innerHTML = '100';
         let playerTwoHealth = document.getElementById("playerTwoHealth");
         playerTwoHealth.innerHTML = '100';
+
+        let fightTitle = document.getElementById('title');
+        fightTitle.style.display = 'block';
+
+        let gameOverScreen = document.getElementById("gameOverScreen");
+        gameOverScreen.style = "display: none";
+
         randomPlayerStarts();
     });
     restartBtn.style.display = 'block';

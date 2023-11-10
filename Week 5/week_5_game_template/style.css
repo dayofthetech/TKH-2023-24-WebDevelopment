@@ -40,6 +40,7 @@ body {
     text-align: center;
     justify-content: center;
     align-items: center;
+    height: 45em;
 }
 
 .healthSection {
@@ -108,3 +109,52 @@ button {
     /* this overrides js */
     display: none;
 }
+
+#characterSelectionOne {
+    width: 15em;
+    top: 10em;
+    right: 30em;
+    display: flex;
+    /* background-color: white; */
+    justify-content: center; /* Horizontally center content */
+    align-items: center; /* Vertically center content */
+    height: 100%; /* Set the height to 100% for vertical alignment */
+}
+#characterSelectionTwo {
+    width: 15em;
+    top: 10em;
+    left: 30em;
+    display: flex;
+    /* background-color: white; */
+    justify-content: center; /* Horizontally center content */
+    align-items: center; /* Vertically center content */
+    height: 100%; /* Set the height to 100% for vertical alignment */
+}
+
+#characterSelectionOne div {
+    width: 100px; /* Set the width to create a square shape */
+    height: 100px; /* Set the height to create a square shape */
+    line-height: 150px; /* Center the image vertically */
+    /* border: 2px solid black;  */
+    /* Add a border to create the square shape */
+}
+
+#characterSelectionTwo div img {
+    max-width: 100%;
+    max-height: 100%;
+    /* transform: scale(1.5); */
+}
+#characterSelectionTwo div {
+    width: 100px; /* Set the width to create a square shape */
+    height: 100px; /* Set the height to create a square shape */
+    line-height: 150px; /* Center the image vertically */
+    /* border: 2px solid black;  */
+    /* Add a border to create the square shape */
+}
+
+#characterSelectionOne div img {
+    max-width: 100%;
+    max-height: 100%;
+    /* transform: scale(1.5); */
+}
+
