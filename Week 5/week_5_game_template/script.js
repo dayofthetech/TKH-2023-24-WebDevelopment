@@ -13,22 +13,22 @@ const characterImages = [
 ];
 
 // DOM retrieve space where chatr will be displayed
-const selectedCharacter = document.querySelector('#characterSelectionOne div img');
+// const selectedCharacter = document.querySelector('#characterSelectionOne div img');
 
-let currentCharacterIndex = 0;
-// left and right logic
-document.getElementById('prevCharacter').addEventListener('click', () => {
-    currentCharacterIndex = (currentCharacterIndex - 1 + characterImages.length) % characterImages.length;
-    selectedCharacter.src = characterImages[currentCharacterIndex];    selectedCharacterTwo.src = characterImages[currentCharacterIndex];
-});
+// let currentCharacterIndex = 0;
+// // left and right logic
+// document.getElementById('prevCharacter').addEventListener('click', () => {
+//     currentCharacterIndex = (currentCharacterIndex - 1 + characterImages.length) % characterImages.length;
+//     selectedCharacter.src = characterImages[currentCharacterIndex];  selectedCharacter.src = characterImages[currentCharacterIndex];
+// });
 
-document.getElementById('nextCharacter').addEventListener('click', () => {
-    currentCharacterIndex = (currentCharacterIndex + 1) % characterImages.length;
-    selectedCharacter.src = characterImages[currentCharacterIndex];
-});
+// document.getElementById('nextCharacter').addEventListener('click', () => {
+//     currentCharacterIndex = (currentCharacterIndex + 1) % characterImages.length;
+//     selectedCharacter.src = characterImages[currentCharacterIndex];
+// });
 
-// Initialize the selected character image
-selectedCharacter.src = characterImages[currentCharacterIndex];
+// // Initialize the selected character image
+// selectedCharacter.src = characterImages[currentCharacterIndex];
 
 
 // This function takes care of randomly selecting
@@ -113,6 +113,9 @@ function attackPlayerOne(){
         playerTwoAttackButton.classList.add("active");
         playerTwoAttackButton.classList.remove("inactive");
 
+        // displaying player's turn
+        let playerTwo = document.getElementById("playerName");
+        playerTwo.innerHTML = "Player's 2";
 
     }
 
@@ -183,7 +186,7 @@ function attackPlayerOne(){
         // resets the HTML to the new value
         playerTwoHealth.innerHTML = playerTwoHealthNum;
 
-        if(playerTwoHealthNum <= 80){
+        if(playerTwoHealthNum <= 0){
             gameOver("Player 1");
         }
 
@@ -208,6 +211,9 @@ function attackPlayerTwo(){
         playerOneAttackButton.disabled = false;
         playerOneAttackButton.classList.add("active");
         playerOneAttackButton.classList.remove("inactive");
+
+        let playerOne = document.getElementById("playerName");
+        playerOne.innerHTML = "Player's 1";
     }
 
     function animatePlayer() {
@@ -260,7 +266,7 @@ function attackPlayerTwo(){
         // resets the HTML to the new value
         playerOneHealth.innerHTML = playerOneHealthNum;
 
-        if(playerOneHealthNum <= 80){
+        if(playerOneHealthNum <= 0){
             gameOver("Player 2");
         }
     }
