@@ -253,3 +253,215 @@ console.log(newBike.rideBike()); //weee this is fun blue */
   console.log(surgeonRomero.name);
   surgeonRomero.takeVacationDays(3);
   console.log(surgeonRomero.remainingVacationDays); */
+
+
+// codeacademy class exercise - need to go back and make
+// notes
+/*   class HospitalEmployee {
+    constructor(name) {
+      this._name = name;
+      this._remainingVacationDays = 20;
+    }
+
+    get name() {
+      return this._name;
+    }
+
+    get remainingVacationDays() {
+      return this._remainingVacationDays;
+    }
+
+    takeVacationDays(daysOff) {
+      this._remainingVacationDays -= daysOff;
+    }
+
+    static generatePassword() {
+      return Math.floor(Math.random()  * 10000);
+    }
+  }
+
+  class Nurse extends HospitalEmployee {
+    constructor(name, certifications) {
+      super(name);
+      this._certifications = certifications;
+    }
+
+    get certifications() {
+      return this._certifications;
+    }
+
+    addCertification(newCertification) {
+      this.certifications.push(newCertification);
+    }
+  }
+
+  const nurseOlynyk = new Nurse('Olynyk', ['Trauma','Pediatrics']);
+  nurseOlynyk.takeVacationDays(5);
+  console.log(nurseOlynyk.remainingVacationDays);
+  nurseOlynyk.addCertification('Genetics');
+  console.log(nurseOlynyk.certifications); */
+
+
+// ---Introduction to Iterators---
+
+/* const animals = ['Hen', 'elephant', 'llama', 'leopard', 'ostrich', 'Whale', 'octopus', 'rabbit', 'lion', 'dog'];
+
+// Create the secretMessage array below
+const secretMessage = animals.map(animal => {
+  return animal[0];
+})
+
+console.log(secretMessage.join(''));
+
+const bigNumbers = [100, 200, 300, 400, 500];
+
+// Create the smallNumbers array below
+const smallNumbers = bigNumbers.map(n => {
+  return n / 100;
+}) */
+
+
+/* const artists = ['Picasso', 'Kahlo', 'Matisse', 'Utamaro'];
+
+artists.forEach(artist => {
+  console.log(artist + ' is one of my favorite artists.');
+});
+
+const numbers = [1, 2, 3, 4, 5];
+
+const squareNumbers = numbers.map(number => {
+  return number * number;
+});
+
+console.log(squareNumbers);
+
+const things = ['desk', 'chair', 5, 'backpack', 3.14, 100];
+
+const onlyNumbers = things.filter(thing => {
+  return typeof thing === 'number';
+});
+
+console.log(onlyNumbers); */
+
+
+/* const animals = ['Hen', 'elephant', 'llama', 'leopard', 'ostrich', 'Whale', 'octopus', 'rabbit', 'lion', 'dog'];
+
+// Create the secretMessage array below
+//  this returns the first letter of each animal
+const secretMessage = animals.map(animal => {
+  return animal[0];
+})
+
+// then joins the letter to reveal a message
+console.log(secretMessage.join(''));
+
+const bigNumbers = [100, 200, 300, 400, 500];
+
+// Create the smallNumbers array below
+const smallNumbers = bigNumbers.map(n => {
+  return n / 100;
+}) */
+
+const words = ['chair', 'music', 'pillow', 'brick', 'pen', 'door'];
+
+const shortWords = words.filter(word => {
+  return word.length < 6;
+});
+
+console.log(words); // Output: ['chair', 'music', 'pillow', 'brick', 'pen', 'door'];
+console.log(shortWords); // Output: ['chair', 'music', 'brick', 'pen', 'door']
+
+
+/*
+Call the .filter() method on randomNumbers to return values that
+are less than 250.
+Save them to a new array called smallNumbers,
+declared with const. */
+const randomNumbers = [375, 200, 3.14, 7, 13, 852];
+
+// Call .filter() on randomNumbers below
+const smallNumbers = randomNumbers.filter(num => {
+  return num < 250;
+})
+
+/* Invoke .filter() on the favoriteWords array to return
+elements that have more than 7 characters.
+Save the returned array to a
+const variable named longFavoriteWords. */
+
+const favoriteWords = [
+  'nostalgia', 'hyperbole',
+  'fervent', 'esoteric', 'serene'];
+
+// Call .filter() on favoriteWords below
+const longFavoriteWords = favoriteWords.filter(item => {
+  return item.length > 7;
+})
+
+//--- findIndex ---
+
+const animals = ['hippo', 'tiger', 'lion', 'seal', 'cheetah', 'monkey', 'salamander', 'elephant'];
+
+// returns the animal that matches str
+const foundAnimal = animals.findIndex(animal => {
+  return animal === "elephant";
+})
+
+// returns animal that starts with letter
+const startsWithS = animals.findIndex(animal => {
+  return animal[0] === 's';
+})
+
+// --- reduce() ---
+
+const cities = ['Orlando', 'Dubai', 'Edinburgh', 'Chennai', 'Accra', 'Denver', 'Eskisehir', 'Medellin', 'Yokohama'];
+/* Replace the word method in the first method call with a
+method that will do
+something to each of the values in the array and return undefined. */
+
+cities.forEach(city => console.log('Have you visited ' + city + '?'));
+
+//---
+
+// const longCities = cities.filter(city => city.length > 7);
+
+/* In the second method call, replace
+the word method with a method that will
+return a new array with only those
+elements longer than 7 characters. */
+
+// const longCities = cities.filter(city => city.length > 7);
+
+
+// ---
+
+
+/* In the third method call,
+replace the word method with a method that
+accepts an array containing multiple values
+and returns a single value. */
+
+const word = cities.reduce((acc, currVal) => {
+  return acc + currVal[0]
+}, "C");
+
+console.log(word)
+
+// ---
+
+const nums = [1, 50, 75, 200, 350, 525, 1000]
+
+/* In the fourth method call, replace the word method with a method
+that will return a new array of numbers returned from the function. */
+
+const smallerNums = nums.map(num => num - 5);
+
+// ---
+
+/* In the fifth method call, replace the word method with a
+method that will return a boolean value. */
+
+nums.some(num => num < 0);
+
+
+

@@ -7,8 +7,24 @@
 </head>
 <body>
     <header></header>
-    <div id="groceryList"></div>
+    <div id="groceryList">
 
+    </div>
+    <div id="totals">
+        <p><span id="totalCost"></span></p>
+        <p><span id="totalQuantity"></span></p>
+    </div>
+
+    <button onclick="addItemPrompt()">ADD ITEM</button>
+    <button onclick="isolateCategory('Fruits')">FRUITS</button>
+    <button onclick="isolateCategory('Vegetables')">VEGETABLES</button>
+    <button onclick="isolateCategory('Dairy')">DAIRY</button>
+    <button onclick="showAllCategories()">SHOW ALL CAT</button>
+    <button onclick="orderItemsByCost()">BY COST</button>
+
+    <div id="formSec">
+
+    </div>
 
     <script src="script.js"></script>
 </body>
