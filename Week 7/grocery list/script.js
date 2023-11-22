@@ -7,11 +7,21 @@ Price
 Quantity (units)
 Total cost
 Totals Quantity
-[]Button to add new grocery items using prompt() to ask for user input
-    []I would like a form section rather than prompt
+[X]Button to add new grocery items using prompt() to ask for user input
+    [X]I would like a <form> rather than prompt
+[]use localStorage to save list
+[]I need to create a localStorage of the original
+    groceryItems
 Buttons to separate the categories
 A button to show all items
 Order by cost (most to least) */
+
+// Save the updated groceryItems to local storage
+// stringify and parse are important to learn
+// localStorage.setItem('groceryItems', JSON.stringify(groceryItems));
+// the above syntax does not set a variable, I would like to start
+// with the variable, so maybe
+// let
 
 let groceryItems = [
     { name: 'Apple', category: 'Fruits', price: 1.0, quantity: 6 },

@@ -1,0 +1,12 @@
+{
+  "name": "classroom-average",
+  "version": "1.0.0",
+  "description": "project classroom average",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
