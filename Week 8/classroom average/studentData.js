@@ -7,7 +7,7 @@ const students = [
         id: 1,
         name: 'Alabaster',
         address: '123 Street',
-        averageGrade: 80,
+        averageGrade: 50,
     },
     {
         id: 2,
