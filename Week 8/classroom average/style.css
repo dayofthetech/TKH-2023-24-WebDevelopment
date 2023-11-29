@@ -1,0 +1,14 @@
+#myTable {
+    border: solid;
+    padding: 1.5em;
+
+}
+
+th {
+    border: solid;
+}
+
+td {
+    border: solid;
+    padding: 1.5em;
+}

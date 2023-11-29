@@ -5,19 +5,20 @@
 import calculateClassroomAverage from "./calculateClassroomAverage.js";
 import  students  from "./studentData.js";
 
+const renderStudentTable = (data) => {
 
-let studentTable = document.getElementById('myTable');
+    let studentTable = document.getElementById('myTable');
 
-/* Solution to display key names from object
-assign each key a 'readable' string which will be used as header */
-const keyDisplayNames = {
-    id: 'ID',
-    name: 'Name',
-    address: 'Address',
-    averageGrade: 'Average Grade',
-};
+    /* Solution to display key names from object
+    assign each key a 'readable' string which will be used as header */
+    const keyDisplayNames = {
+        id: 'ID',
+        name: 'Name',
+        address: 'Address',
+        averageGrade: 'Average Grade',
+    };
 
-const renderStudentTable = (table, data) => {
+
 
     let headerRow = document.createElement('tr');
     // key in the student object index 0
@@ -26,7 +27,7 @@ const renderStudentTable = (table, data) => {
         header.innerHTML = keyDisplayNames[key];
         headerRow.appendChild(header);
     }
-    table.appendChild(headerRow);
+    studentTable.appendChild(headerRow);
 
     // hard coded way - inserting each column as a string
 
@@ -92,7 +93,8 @@ const renderStudentTable = (table, data) => {
         studentRow.appendChild(studentAverageG);
 
         // appending row to table
-        table.appendChild(studentRow);
+        // table.appendChild(studentRow);
+        studentTable.appendChild(studentRow);
     }
 }
 
@@ -105,9 +107,6 @@ const updateGrade = (index, newGrade) => {
     calculateClassroomAverage(students);
 }
 
-
-renderStudentTable(studentTable, students);
-
-export default renderStudentTable;
+export {renderStudentTable, updateGrade};
 
 

@@ -12,6 +12,4 @@ const calculateClassroomAverage = (studentData) => {
     classroomAverage.innerHTML = `Your class average is ${classroomGrade / studentData.length} `;
 }
 
-calculateClassroomAverage(students);
-
 export default calculateClassroomAverage;
