@@ -108,4 +108,6 @@ const updateGrade = (index, newGrade) => {
 
 renderStudentTable(studentTable, students);
 
+export default renderStudentTable;
+
 
