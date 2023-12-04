@@ -1,0 +1,30 @@
+body {
+    display: flex;
+}
+
+#app {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Adjust this property for spacing between items */
+  }
+
+#pokeDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Center items vertically */
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 35%;
+}
+
+#pokeInfo {
+    text-align: left;
+    list-style-type: none;
+}
+
+#pokemonImg {
+    max-width: 100px;
+    height: auto;
+    margin-right: 10px;
+}
