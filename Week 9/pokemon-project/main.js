@@ -1,6 +1,7 @@
 /* In the main.js file, import the API call function and use it to fetch
 Pokémon data. You should be able to specify a Pokémon by ID or name
-as an argument to the function. */
+as an argument to the function.
+npm create vite@latest*/
 
 /* path for project completion
 [] learn css styling codecademy etc and make sure to comment what each
@@ -8,9 +9,7 @@ as an argument to the function. */
 [X] Turn the pokeDiv into grid then img left side / text right side
 [X] Text should be on ul il bullet points
 []  Module that handles creating random nums
-[] Add a pokeball img, and make it btn, once click it will display pokemon
-    How about starting first with the btn pokeball img and on click it will
-    call the fetch?
+[]
 [] Implement input field where user can fecth specific pokemon
  */
 
@@ -18,21 +17,8 @@ import axios from "axios";
 
 // importing modules
 import { fetchPokemon } from "./apiCalls.js";
-
-// generate and return X unique rndm nums
-function generatingPoke(){
-    /* https://www.geeksforgeeks.org/set-vs-array-in-javascript/
-    Set are unordered way to store objs.
-    While the set is less than the size, it will create an unique
-    random number and add it to the set.
-    Then that Set is returned in a Array to be iterate-able */
-    const randomNum = new Set();
-    while(randomNum.size < 12 ){
-        const num = Math.floor(Math.random() * 101);
-        randomNum.add(num);
-    }
-    return Array.from(randomNum);
-}
+import generatingPoke from "./generatingPoke.js";
+import displayingPoke from "./displayingPoke.js";
 
 // now pokeID is an array of nums
 const pokeID = generatingPoke();
@@ -61,6 +47,7 @@ the logic into a placeholder array   */
     to create the img and append it to the html */
     pokemonDataArray.forEach((data) => {
         const pokeDiv = document.createElement("div");
+        const list = document.createElement("ul");
         pokeDiv.id = 'pokeDiv';
         const pokeObj = {
             name: data.name,
@@ -69,10 +56,6 @@ the logic into a placeholder array   */
             abilities: data.abilities.map(ability => ability.ability.name),
             height: data.height,
         }
-
-        // const pokeInfo = document.createElement("p");
-
-        const list = document.createElement("ul");
         /* iterate for each obj property, creates an li, assigns text
         to it and append to ul
         key.charAt(0).toUpperCase() + key.slice(1) this takes care of capitalizing
@@ -87,20 +70,24 @@ the logic into a placeholder array   */
             list.appendChild(pokeInfo);
         }
 
+
         const pokemonSpriteSrc = data.sprites.front_default;
         const pokemonImg = document.createElement("img");
         pokemonImg.id = "pokemonImg";
         pokemonImg.src = pokemonSpriteSrc;
+
         pokeDiv.appendChild(pokemonImg);
         pokeDiv.appendChild(list);
         app.appendChild(pokeDiv);
 
+
+
+
+
+        displayingPoke();
         /* logic for rest of information */
     });
-
     console.log(pokemonDataArray);
-
-
 }))
 .catch((error) => {
     console.error("Error fetching Pokemon data:", error);
