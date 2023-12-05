@@ -16,7 +16,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/dayofthetech">
     <img src="./assets/img/pokeball.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -59,7 +59,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 The project goal is to fetch data from the pokeapi and display an X number of random pokemon with their basic information such as name, ID, type on the page.
 
@@ -152,8 +151,6 @@ Don't forget to give the project a star! Thanks again!
 ## Acknowledgments
 
 * [The Knowledge House](https://www.linkedin.com/school/theknowledgehouse/)
-* []()
-* []()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
