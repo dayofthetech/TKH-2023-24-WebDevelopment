@@ -1,4 +1,10 @@
 import fetchData from "./apiCall.js";
+import getCharacters from "./characterData.js";
+import startGame from "./startGame.js";
+import generateTiles from "./generateTiles.js";
 
-const data = await fetchData();
-console.log(data.attack);
+
+// generateTiles();
+
+const appDiv = document.getElementById("app");
+startGame(appDiv);
